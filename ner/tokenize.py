@@ -19,14 +19,7 @@ def spacy_sent_tokenize(txt, spans=True):
 
 
 from .abbv import d_spanish_abbv_lower
-def fix_sent_tokenization(txt, spans, ending_abbreviations, verbose=False):
-    '''
-    Joins the sentences of `txt` delimited by `spans`.
-    It joins the span `i` with the span `i+1` if span `i` ends with any of the
-    provided `ending_abbreviations`
-
-    One example of `ending_abbreviations` can be `d_spanish_abbv_lower.keys()`
-    '''
+def fix_sent_tokenization(txt, spans, verbose=False):
     for i in reversed(range(len(spans)-1)): # Traverse the list of spans (but last span) backwards
         span = spans[i] # start,end tuple
         
