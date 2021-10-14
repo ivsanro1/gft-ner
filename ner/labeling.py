@@ -1,5 +1,5 @@
 import re
-from pylighter import Annotation
+
 
 def dump_annot(annotation, df):
     '''
@@ -13,6 +13,7 @@ def dump_annot(annotation, df):
 
 
 def load_annot(df, additional_label_names=None):
+    from pylighter import Annotation
     assert 'ner_char_labels_pylighter' in df
 
     if additional_label_names is None: 
