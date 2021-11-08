@@ -5,7 +5,6 @@ from setuptools import setup, find_packages
 MODULE_NAME = 'ner'
 
 requires_file = 'requires.txt'
-exec(f'from {MODULE_NAME} import VERSION')
 
 
 ################################################################################
