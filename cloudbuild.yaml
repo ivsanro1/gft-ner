@@ -23,7 +23,7 @@ steps:
 
         python setup.py sdist bdist_wheel
 
-        twine upload --repository-url
+        twine upload --verbose --repository-url
         https://${_REGION}-python.pkg.dev/${PROJECT_ID}/${_REPO}/ dist/*
 
     dir: package
