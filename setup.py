@@ -4,15 +4,12 @@ from setuptools import setup, find_packages
 
 MODULE_NAME = 'ner'
 
-requires_file = 'requires.txt'
-
-
 ################################################################################
 
 def read_rel(rel_path):
     here = os.path.abspath(os.path.dirname(__file__))
-    with codecs.open(os.path.join(here, rel_path), 'r') as ifh:
-        return ifh.read()
+    with codecs.open(os.path.join(here, rel_path), 'r') as f:
+        return f.read()
 
 
 def get_version(rel_path):
@@ -23,15 +20,12 @@ def get_version(rel_path):
 
     raise RuntimeError("Unable to find version string.")
 
-
 ################################################################################
 
-# Comma separated list of names and emails
 AUTHORS = ""
 EMAILS = ""
-
-# Short description
 DESCRIPTION_SHORT = "..."
+VERSION = get_version(os.path.join(MODULE_NAME, "__init__.py"))
 
 # Long description
 with open("README.md", encoding="utf-8") as f:
@@ -48,12 +42,6 @@ kwargs = {
         "console_scripts": []
     }
 }
-
-####
-
-VERSION = get_version(os.path.join(MODULE_NAME, "__init__.py"))
-
-
 
 ################################################################################
 

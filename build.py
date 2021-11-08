@@ -4,13 +4,12 @@ https://stackoverflow.com/questions/9905743/how-do-i-run-the-python-sdist-comman
 from distutils.core import run_setup
 
 import os
-
+from .setup import get_version
 # Get module name
-module_name = 'template_python_lib'
+MODULE_NAME = 'template_python_lib'
 
 # Get version
-from template_python_lib import VERSION
-version = VERSION
+VERSION = get_version(os.path.join(MODULE_NAME, "__init__.py"))
 
 # Get real path of this file
 this_file_path = os.path.realpath(__file__)
