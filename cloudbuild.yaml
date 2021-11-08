@@ -1,0 +1,33 @@
+steps:
+  - name: 'python:3.9'
+    args:
+      - '-c'
+      - >
+        cd ..
+
+        pip install --upgrade pip setuptools twine wheel
+
+        pip install keyring
+
+        pip install keyrings.google-artifactregistry-auth
+      
+        mkdir -p ~/.config/pip
+
+        printf "[distutils]\nindex-servers = \n   
+        ${_REPO}\n\n[${_REPO}]\nrepository:
+        https://${_REGION}-python.pkg.dev/${PROJECT_ID}/${_REPO}/\n" > ~/.pypirc
+
+        printf "[global]\nindex-url =
+        https://${_REGION}-python.pkg.dev/${PROJECT_ID}/${_REPO}/simple/\n" >
+        ~/.config/pip/pip.conf
+
+        python setup.py sdist bdist_wheel
+
+        twine upload --repository-url
+        https://${_REGION}-python.pkg.dev/${PROJECT_ID}/${_REPO}/ dist/*
+
+    dir: package
+    entrypoint: /bin/bash
+substitutions:
+  _REPO: private-python-libs
+  _REGION: europe
