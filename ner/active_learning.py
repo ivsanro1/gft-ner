@@ -38,6 +38,9 @@ def mnlp(ner_row):
         IN: [0.5, 0.5, 0.9]
         OUT: -0.49721829225923897
     '''
+    if len(ner_row['ner_list_toks']) == 0:  # Empty input sequence
+        return 0
+
     # Num sp tokens and num of output probas is the same
     assert len(ner_row['ner_predict_softmax']) == len(ner_row['sp_input_tok'])
     
